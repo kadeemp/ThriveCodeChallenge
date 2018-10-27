@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		67023D64DF77655666D8B66D /* Pods_ThriveCodeChallenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2A330E3CF23824AA92B2DC1 /* Pods_ThriveCodeChallenge.framework */; };
 		F40B128A21852AB200D28D23 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40B128921852AB200D28D23 /* AppDelegate.swift */; };
 		F40B128F21852AB200D28D23 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F40B128D21852AB200D28D23 /* Main.storyboard */; };
 		F40B129121852AB500D28D23 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F40B129021852AB500D28D23 /* Assets.xcassets */; };
@@ -20,6 +21,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		46F4DD70B7771E0256C79C09 /* Pods-ThriveCodeChallenge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ThriveCodeChallenge.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ThriveCodeChallenge/Pods-ThriveCodeChallenge.debug.xcconfig"; sourceTree = "<group>"; };
+		770796DD57E8900CFC53F424 /* Pods-ThriveCodeChallenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ThriveCodeChallenge.release.xcconfig"; path = "Pods/Target Support Files/Pods-ThriveCodeChallenge/Pods-ThriveCodeChallenge.release.xcconfig"; sourceTree = "<group>"; };
+		E2A330E3CF23824AA92B2DC1 /* Pods_ThriveCodeChallenge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ThriveCodeChallenge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F40B128621852AB200D28D23 /* ThriveCodeChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ThriveCodeChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F40B128921852AB200D28D23 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F40B128E21852AB200D28D23 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -39,17 +43,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67023D64DF77655666D8B66D /* Pods_ThriveCodeChallenge.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0125E0DE3F9CB77EF189C0E6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				46F4DD70B7771E0256C79C09 /* Pods-ThriveCodeChallenge.debug.xcconfig */,
+				770796DD57E8900CFC53F424 /* Pods-ThriveCodeChallenge.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		75EFF6D4EC9E1CF42D9082B6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E2A330E3CF23824AA92B2DC1 /* Pods_ThriveCodeChallenge.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F40B127D21852AB200D28D23 = {
 			isa = PBXGroup;
 			children = (
 				F40B128821852AB200D28D23 /* ThriveCodeChallenge */,
 				F40B128721852AB200D28D23 /* Products */,
+				0125E0DE3F9CB77EF189C0E6 /* Pods */,
+				75EFF6D4EC9E1CF42D9082B6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -110,9 +134,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F40B129821852AB500D28D23 /* Build configuration list for PBXNativeTarget "ThriveCodeChallenge" */;
 			buildPhases = (
+				B6BFA21C0451B005E4C0BACB /* [CP] Check Pods Manifest.lock */,
 				F40B128221852AB200D28D23 /* Sources */,
 				F40B128321852AB200D28D23 /* Frameworks */,
 				F40B128421852AB200D28D23 /* Resources */,
+				C34186850A382D111BEAE22A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -168,6 +194,47 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		B6BFA21C0451B005E4C0BACB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ThriveCodeChallenge-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C34186850A382D111BEAE22A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-ThriveCodeChallenge/Pods-ThriveCodeChallenge-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ThriveCodeChallenge/Pods-ThriveCodeChallenge-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F40B128221852AB200D28D23 /* Sources */ = {
@@ -324,6 +391,7 @@
 		};
 		F40B129921852AB500D28D23 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 46F4DD70B7771E0256C79C09 /* Pods-ThriveCodeChallenge.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -342,6 +410,7 @@
 		};
 		F40B129A21852AB500D28D23 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 770796DD57E8900CFC53F424 /* Pods-ThriveCodeChallenge.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
