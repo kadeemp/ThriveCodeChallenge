@@ -16,9 +16,9 @@ class BookDetailsViewController: UIViewController {
         if BookDetailsViewController.book != nil {
             titleLabel.text = BookDetailsViewController.book.title
             authorLabel.text = BookDetailsViewController.book.author
-            publisherLabel.text = BookDetailsViewController.book.publisher
-            tagLabel.text = BookDetailsViewController.book.categories
-            lastCheckedOutLabel.text = BookDetailsViewController.book.lastCheckedOut
+            publisherLabel.text = "Publisher: \(BookDetailsViewController.book.publisher)"
+            tagLabel.text = "Tags: \(BookDetailsViewController.book.categories)"
+            lastCheckedOutLabel.text = "Last Check Out: \n \(BookDetailsViewController.book.lastCheckedOut!)"
         }
 
 

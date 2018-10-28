@@ -19,19 +19,19 @@ class BookLibraryViewController: UIViewController, UITableViewDelegate, UITableV
         super.viewDidLoad()
         setupDeleteButton()
         self.title = "Book Library"
-        NetworkingService.returnBooks { (returnedBooks) in
-            self.books = returnedBooks
-            self.bookTableView.reloadData()
-        }
-        NotificationCenter.default.addObserver(self, selector: #selector(loadList), name: NSNotification.Name(rawValue: "load"), object: nil)
+        loadBooks()
+        NotificationCenter.default.addObserver(self, selector: #selector(loadBooks), name: NSNotification.Name(rawValue: "load"), object: nil)
     }
 
     @IBAction func addBookPressed(_ sender: Any) {
         performSegue(withIdentifier: "segueToBookAddition", sender: self)
     }
 
-    @objc func loadList() {
-        bookTableView.reloadData()
+    @objc func loadBooks() {
+        NetworkingService.returnBooks { (returnedBooks) in
+            self.books = returnedBooks
+            self.bookTableView.reloadData()
+        }
     }
     func setupDeleteButton() {
         let button = UIButton(type: .system)
@@ -73,5 +73,13 @@ class BookLibraryViewController: UIViewController, UITableViewDelegate, UITableV
         BookDetailsViewController.book = books[indexPath.row]
     }
 
-    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let book = books[indexPath.row]
+            NetworkingService.deleteBook(bookId: book.id)
+            books.remove(at: indexPath.row)
+            bookTableView.deleteRows(at: [indexPath], with: .fade)
+            
+        }
+    }
 }

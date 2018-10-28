@@ -23,7 +23,7 @@ class BookAdditionViewController: UIViewController {
     
 
     @IBAction func submitPressed(_ sender: Any) {
-        if (bookTitleLabel.text != nil && authorLabel.text != nil && publisherLabel.text != nil && categoryLabel.text != nil){
+        if (bookTitleLabel.text != "" && authorLabel.text != "" && publisherLabel.text != "" && categoryLabel.text != ""){
             NetworkingService.addBook(author: authorLabel.text!, categories: categoryLabel.text!, title: bookTitleLabel.text!, publisher: publisherLabel.text!) {
                 () in
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
