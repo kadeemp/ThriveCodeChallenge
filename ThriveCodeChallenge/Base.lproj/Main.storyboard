@@ -97,18 +97,18 @@
                     <connections>
                         <outlet property="addBookButton" destination="hWO-3w-Yor" id="lXE-ig-25a"/>
                         <outlet property="bookTableView" destination="Sxf-yM-JPZ" id="YHs-Pd-6ID"/>
-                        <segue destination="Sd7-w4-2ry" kind="show" identifier="segueToBookAddition" id="jtP-sR-Qty"/>
-                        <segue destination="tKa-1J-TRw" kind="show" identifier="segueToDetail" id="MKv-B3-8Nv"/>
+                        <segue destination="Sd7-w4-2ry" kind="show" identifier="segueToDetail" id="jtP-sR-Qty"/>
+                        <segue destination="tKa-1J-TRw" kind="show" identifier="segueToBookAddition" id="MKv-B3-8Nv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1056.8" y="91.304347826086968"/>
         </scene>
-        <!--Book Detail View Controller-->
+        <!--Book Addition View Controller-->
         <scene sceneID="ICx-ak-Tic">
             <objects>
-                <viewController id="tKa-1J-TRw" customClass="BookDetailViewController" customModule="ThriveCodeChallenge" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="tKa-1J-TRw" customClass="BookAdditionViewController" customModule="ThriveCodeChallenge" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="K5L-FY-0mk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -120,20 +120,85 @@
             </objects>
             <point key="canvasLocation" x="1073" y="859"/>
         </scene>
-        <!--Book Addition View Controller-->
+        <!--Book Details View Controller-->
         <scene sceneID="zkg-x6-KUp">
             <objects>
-                <viewController id="Sd7-w4-2ry" customClass="BookAdditionViewController" customModule="ThriveCodeChallenge" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Sd7-w4-2ry" customClass="BookDetailsViewController" customModule="ThriveCodeChallenge" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hnU-Zr-N5c">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="G6J-e5-sIq">
+                                <rect key="frame" x="16" y="80" width="343" height="283.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LOd-ow-V1n">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UqB-RB-Ta0">
+                                        <rect key="frame" x="0.0" y="66" width="343" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PSU-3a-wHs">
+                                        <rect key="frame" x="0.0" y="131.5" width="343" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7G0-3K-ISg">
+                                        <rect key="frame" x="0.0" y="197.5" width="343" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Edg-iv-lAd">
+                                        <rect key="frame" x="0.0" y="263" width="343" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xcm-2C-gls">
+                                <rect key="frame" x="50" y="394" width="275" height="83.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                <state key="normal" title="Checkout" backgroundImage="Rectangle">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="checkOutBtnPressed:" destination="Sd7-w4-2ry" eventType="touchUpInside" id="W53-5F-plU"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Xcm-2C-gls" firstAttribute="leading" secondItem="DJT-WA-Bug" secondAttribute="leading" constant="50" id="0Gy-gY-VGm"/>
+                            <constraint firstItem="DJT-WA-Bug" firstAttribute="trailing" secondItem="G6J-e5-sIq" secondAttribute="trailing" constant="16" id="7I7-4t-KVM"/>
+                            <constraint firstItem="G6J-e5-sIq" firstAttribute="height" secondItem="hnU-Zr-N5c" secondAttribute="height" multiplier="2/4" constant="-50" id="8Go-1g-fOb"/>
+                            <constraint firstItem="Xcm-2C-gls" firstAttribute="top" secondItem="G6J-e5-sIq" secondAttribute="bottom" constant="30.5" id="IVj-q8-THw"/>
+                            <constraint firstItem="G6J-e5-sIq" firstAttribute="top" secondItem="DJT-WA-Bug" secondAttribute="top" constant="16" id="Igr-bZ-rq1"/>
+                            <constraint firstItem="DJT-WA-Bug" firstAttribute="trailing" secondItem="Xcm-2C-gls" secondAttribute="trailing" constant="50" id="hcA-kO-dHx"/>
+                            <constraint firstItem="Xcm-2C-gls" firstAttribute="height" secondItem="hnU-Zr-N5c" secondAttribute="height" multiplier="1/8" id="pH8-FR-JcM"/>
+                            <constraint firstItem="G6J-e5-sIq" firstAttribute="leading" secondItem="DJT-WA-Bug" secondAttribute="leading" constant="16" id="wja-hU-tnL"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="DJT-WA-Bug"/>
                     </view>
+                    <connections>
+                        <outlet property="authorLabel" destination="UqB-RB-Ta0" id="lPO-3N-1gB"/>
+                        <outlet property="checkOutBtn" destination="Xcm-2C-gls" id="ECU-ov-Daw"/>
+                        <outlet property="lastCheckedOutLabel" destination="Edg-iv-lAd" id="8cR-00-HWw"/>
+                        <outlet property="publisherLabel" destination="PSU-3a-wHs" id="t4J-g2-M23"/>
+                        <outlet property="tagLabel" destination="7G0-3K-ISg" id="V6K-aJ-jpF"/>
+                        <outlet property="titleLabel" destination="LOd-ow-V1n" id="WAX-7k-Sfn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y5L-m4-13C" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1974" y="96"/>
+            <point key="canvasLocation" x="1973.5999999999999" y="95.802098950524751"/>
         </scene>
         <!--Book Edit View Controller-->
         <scene sceneID="LyH-MT-a2y">
@@ -169,4 +234,7 @@
             <point key="canvasLocation" x="110" y="93"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Rectangle" width="329" height="62"/>
+    </resources>
 </document>

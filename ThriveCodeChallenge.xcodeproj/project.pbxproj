@@ -12,13 +12,13 @@
 		F40B128F21852AB200D28D23 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F40B128D21852AB200D28D23 /* Main.storyboard */; };
 		F40B129121852AB500D28D23 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F40B129021852AB500D28D23 /* Assets.xcassets */; };
 		F40B129421852AB500D28D23 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F40B129221852AB500D28D23 /* LaunchScreen.storyboard */; };
-		F40B129F21852B4E00D28D23 /* BookAdditionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40B129E21852B4E00D28D23 /* BookAdditionViewController.swift */; };
+		F40B129F21852B4E00D28D23 /* BookDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40B129E21852B4E00D28D23 /* BookDetailsViewController.swift */; };
 		F40B12A121852B5D00D28D23 /* BookEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40B12A021852B5D00D28D23 /* BookEditViewController.swift */; };
 		F40B12A321852B7200D28D23 /* BookLibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40B12A221852B7200D28D23 /* BookLibraryViewController.swift */; };
-		F40B12A521852B8200D28D23 /* BookDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40B12A421852B8200D28D23 /* BookDetailViewController.swift */; };
 		F40B12A721852B9900D28D23 /* NetworkingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40B12A621852B9900D28D23 /* NetworkingService.swift */; };
 		F40B12A921852BA700D28D23 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40B12A821852BA700D28D23 /* Book.swift */; };
 		F40B12AB21855E4F00D28D23 /* BookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40B12AA21855E4F00D28D23 /* BookTableViewCell.swift */; };
+		F40B12AF218572BE00D28D23 /* BookAdditionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40B12AE218572BE00D28D23 /* BookAdditionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,13 +31,13 @@
 		F40B129021852AB500D28D23 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F40B129321852AB500D28D23 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F40B129521852AB500D28D23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F40B129E21852B4E00D28D23 /* BookAdditionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookAdditionViewController.swift; sourceTree = "<group>"; };
+		F40B129E21852B4E00D28D23 /* BookDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailsViewController.swift; sourceTree = "<group>"; };
 		F40B12A021852B5D00D28D23 /* BookEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookEditViewController.swift; sourceTree = "<group>"; };
 		F40B12A221852B7200D28D23 /* BookLibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookLibraryViewController.swift; sourceTree = "<group>"; };
-		F40B12A421852B8200D28D23 /* BookDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewController.swift; sourceTree = "<group>"; };
 		F40B12A621852B9900D28D23 /* NetworkingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingService.swift; sourceTree = "<group>"; };
 		F40B12A821852BA700D28D23 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		F40B12AA21855E4F00D28D23 /* BookTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookTableViewCell.swift; sourceTree = "<group>"; };
+		F40B12AE218572BE00D28D23 /* BookAdditionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookAdditionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,10 +105,10 @@
 		F40B129B21852B0F00D28D23 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				F40B129E21852B4E00D28D23 /* BookAdditionViewController.swift */,
+				F40B129E21852B4E00D28D23 /* BookDetailsViewController.swift */,
 				F40B12A021852B5D00D28D23 /* BookEditViewController.swift */,
 				F40B12A221852B7200D28D23 /* BookLibraryViewController.swift */,
-				F40B12A421852B8200D28D23 /* BookDetailViewController.swift */,
+				F40B12AE218572BE00D28D23 /* BookAdditionViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -246,8 +246,8 @@
 			files = (
 				F40B12AB21855E4F00D28D23 /* BookTableViewCell.swift in Sources */,
 				F40B12A921852BA700D28D23 /* Book.swift in Sources */,
-				F40B129F21852B4E00D28D23 /* BookAdditionViewController.swift in Sources */,
-				F40B12A521852B8200D28D23 /* BookDetailViewController.swift in Sources */,
+				F40B12AF218572BE00D28D23 /* BookAdditionViewController.swift in Sources */,
+				F40B129F21852B4E00D28D23 /* BookDetailsViewController.swift in Sources */,
 				F40B128A21852AB200D28D23 /* AppDelegate.swift in Sources */,
 				F40B12A121852B5D00D28D23 /* BookEditViewController.swift in Sources */,
 				F40B12A721852B9900D28D23 /* NetworkingService.swift in Sources */,

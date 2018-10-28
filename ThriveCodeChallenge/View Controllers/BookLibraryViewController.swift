@@ -66,7 +66,7 @@ class BookLibraryViewController: UIViewController, UITableViewDelegate, UITableV
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "segueToDetail", sender: self)
-        BookDetailViewController.book = books[indexPath.row]
+        BookDetailsViewController.book = books[indexPath.row]
     }
 
     

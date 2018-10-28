@@ -12,7 +12,7 @@ class BookAdditionViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.title = "Add Book"
         // Do any additional setup after loading the view.
     }
     

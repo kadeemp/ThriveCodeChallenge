@@ -8,11 +8,11 @@
 
 import UIKit
 
-class BookDetailViewController: UIViewController {
+class BookAdditionViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(BookDetailViewController.book)
+        print(BookAdditionViewController.book)
         // Do any additional setup after loading the view.
     }
     static var book:Book!
