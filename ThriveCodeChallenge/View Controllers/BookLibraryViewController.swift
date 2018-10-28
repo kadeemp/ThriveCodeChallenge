@@ -8,34 +8,36 @@
 
 import UIKit
 
-class BookLibraryViewController: UIViewController {
+class BookLibraryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+
+
+    @IBOutlet weak var bookTableView: UITableView!
+    @IBOutlet weak var addBookButton: UIButton!
+
+    var books:[Book] = []
     override func viewDidLoad() {
         super.viewDidLoad()
-        let bookDetails:[String:String] = [
-            "author" : "Asssh Maurya",
-            "categories" : "pddrocess",
-            "title" : "Runningaa Lean",
-            "publisher" : "O'REIddLLY"
-        ]
-        NetworkingService.deleteAllBooks()
-      // NetworkingService.addBook(bookDetails: bookDetails)
         NetworkingService.returnBooks { (returnedBooks) in
-            //update array, reload tableview
+            self.books = returnedBooks
+            self.bookTableView.reloadData()
         }
 
         // Do any additional setup after loading the view.
     }
     
 
-    /*
-    // MARK: - Navigation
+    @IBAction func addBookPressed(_ sender: Any) {
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
     }
-    */
 
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return books.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = bookTableView.dequeueReusableCell(withIdentifier: "cell")
+        cell?.textLabel?.text = books[indexPath.row].title
+        return cell!
+    }
 }

@@ -17,13 +17,30 @@ class NetworkingService {
 
 
 
-    static func returnBooks(completion:(_ returnedBooks:[Book]) -> ()) {
+    static func returnBooks(completion:@escaping (_ returnedBooks:[Book]) -> ()) {
+        var booksToReturn:[Book] = []
 
         Alamofire.request(baseURL + urlPath, method: .get, parameters: nil, encoding: JSONEncoding.default , headers: nil).responseJSON { (response:DataResponse<Any>) in
             switch response.result {
             case .success:
                 if let json = response.result.value {
                     print(json)
+                    let booksJsonArray = JSON(json).arrayValue
+
+                    for book in booksJsonArray {
+                        let author = book["author"].stringValue
+                        let categories = book["categories"].stringValue
+                        let lastCheckedOut = book["lastCheckedOut"].stringValue
+                        let lastCheckedOutBy = book["lastCheckedOutBy"].stringValue
+                        let id = book["id"].intValue
+                        let publisher = book["publisher"].stringValue
+                        let title = book["title"].stringValue
+
+                        let newBook = Book(author: author, title: title, categories: categories, id: id, lastCheckedOut: lastCheckedOut, lastCheckedOutBy: lastCheckedOutBy, publisher: publisher)
+                        booksToReturn.append(newBook)
+                    }
+                    completion(booksToReturn)
+
                 }
             case .failure:
                 print(response.error)
@@ -32,7 +49,9 @@ class NetworkingService {
         }
     }
     
-    static func addBook(bookDetails:Dictionary<String,String>) {
+    static func addBook(author:String, categories:String, title:String, publisher:String) {
+
+        let bookDetails:Dictionary<String,String> = ["author":author, "categories":categories, "title": title, "publisher": publisher]
 
          Alamofire.request(baseURL + urlPath, method: .post, parameters: bookDetails, encoding: JSONEncoding.default , headers: nil).responseJSON { (response:DataResponse<Any>) in
             switch response.result {
@@ -46,12 +65,13 @@ class NetworkingService {
             }
         }
     }
-    //TODO: Test to make sure this works
-    static func updateBook(book:Book,bookDetails:Dictionary<String,String>) {
 
-        let id =  "/" + String(book.id)
+    static func updateBook(id:Int,bookChecker:String) {
 
-        Alamofire.request(baseURL + urlPath + id, method: .put, parameters: bookDetails, encoding: JSONEncoding.default , headers: nil).responseJSON { (response:DataResponse<Any>) in
+        let idString =  "/" + String(id)
+        let checkoutDetails:Dictionary<String,String>  = ["lastCheckedOutBy":bookChecker]
+
+        Alamofire.request(baseURL + urlPath + idString, method: .put, parameters: checkoutDetails, encoding: JSONEncoding.default , headers: nil).responseJSON { (response:DataResponse<Any>) in
             switch response.result {
             case .success:
                 if let json = response.result.value {

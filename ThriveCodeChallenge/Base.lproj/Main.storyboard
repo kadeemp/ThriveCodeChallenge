@@ -16,14 +16,63 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Sxf-yM-JPZ">
+                                <rect key="frame" x="0.0" y="64" width="375" height="500.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="65" id="X9W-2Q-CJ7">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="65"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="X9W-2Q-CJ7" id="cli-1L-gGN">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="64.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="DJg-cc-Qnz"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="2m3-2F-bti"/>
+                                </connections>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hWO-3w-Yor">
+                                <rect key="frame" x="94" y="589.5" width="187.5" height="52.5"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Add Book +">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="addBookPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xgD-Y4-fGD"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="hWO-3w-Yor" firstAttribute="top" secondItem="Sxf-yM-JPZ" secondAttribute="bottom" constant="25" id="22V-8B-vxR"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="hWO-3w-Yor" secondAttribute="bottom" constant="25" id="3eH-HT-Qq6"/>
+                            <constraint firstItem="hWO-3w-Yor" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="B81-Kb-Bgx"/>
+                            <constraint firstItem="hWO-3w-Yor" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="1/2" id="VJT-9n-2O4"/>
+                            <constraint firstItem="Sxf-yM-JPZ" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="jTq-ye-suI"/>
+                            <constraint firstItem="Sxf-yM-JPZ" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="15/20" id="lti-8l-ylW"/>
+                            <constraint firstItem="Sxf-yM-JPZ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="n9g-lC-Wpz"/>
+                            <constraint firstItem="Sxf-yM-JPZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="u0I-TE-QU2"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="qAL-f5-gO9"/>
+                    <connections>
+                        <outlet property="addBookButton" destination="hWO-3w-Yor" id="lXE-ig-25a"/>
+                        <outlet property="bookTableView" destination="Sxf-yM-JPZ" id="YHs-Pd-6ID"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1058" y="92"/>
+            <point key="canvasLocation" x="1056.8" y="91.304347826086968"/>
         </scene>
         <!--Book Detail View Controller-->
         <scene sceneID="ICx-ak-Tic">
