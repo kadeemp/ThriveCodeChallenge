@@ -49,7 +49,7 @@ class NetworkingService {
         }
     }
     
-    static func addBook(author:String, categories:String, title:String, publisher:String) {
+    static func addBook(author:String, categories:String, title:String, publisher:String, completion:@escaping () -> ()) {
 
         let bookDetails:Dictionary<String,String> = ["author":author, "categories":categories, "title": title, "publisher": publisher]
 
@@ -58,6 +58,7 @@ class NetworkingService {
             case .success:
                 if let json = response.result.value {
                     print(json)
+                    completion()
                 }
             case .failure:
                 print(response.error)

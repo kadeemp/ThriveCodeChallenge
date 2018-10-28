@@ -23,12 +23,16 @@ class BookLibraryViewController: UIViewController, UITableViewDelegate, UITableV
             self.books = returnedBooks
             self.bookTableView.reloadData()
         }
+        NotificationCenter.default.addObserver(self, selector: #selector(loadList), name: NSNotification.Name(rawValue: "load"), object: nil)
     }
 
     @IBAction func addBookPressed(_ sender: Any) {
         performSegue(withIdentifier: "segueToBookAddition", sender: self)
     }
 
+    @objc func loadList() {
+        bookTableView.reloadData()
+    }
     func setupDeleteButton() {
         let button = UIButton(type: .system)
         button.setBackgroundImage(UIImage(named: "Delete Button"), for: .normal)

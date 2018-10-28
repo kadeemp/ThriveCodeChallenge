@@ -10,6 +10,11 @@ import UIKit
 
 class BookAdditionViewController: UIViewController {
 
+    @IBOutlet weak var bookTitleLabel: UITextField!
+    @IBOutlet weak var authorLabel: UITextField!
+    @IBOutlet weak var publisherLabel: UITextField!
+    @IBOutlet weak var categoryLabel: UITextField!
+    @IBOutlet weak var submitBtn: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Add Book"
@@ -17,14 +22,17 @@ class BookAdditionViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
+    @IBAction func submitPressed(_ sender: Any) {
+        if (bookTitleLabel.text != nil && authorLabel.text != nil && publisherLabel.text != nil && categoryLabel.text != nil){
+            NetworkingService.addBook(author: authorLabel.text!, categories: categoryLabel.text!, title: bookTitleLabel.text!, publisher: publisherLabel.text!) {
+                () in
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+                self.navigationController?.popViewController(animated: true)
+            }
+        }
+
+        
     }
-    */
 
 }
