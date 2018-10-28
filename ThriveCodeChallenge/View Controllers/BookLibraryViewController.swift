@@ -13,15 +13,17 @@ class BookLibraryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let bookDetails:[String:String] = [
-            "author" : "Ash Maurya",
-            "categories" : "process",
-            "title" : "Running Lean",
-            "publisher" : "O'REILLY"
+            "author" : "Asssh Maurya",
+            "categories" : "pddrocess",
+            "title" : "Runningaa Lean",
+            "publisher" : "O'REIddLLY"
         ]
-       // NetworkingService.addBook(bookDetails: bookDetails)
+        NetworkingService.deleteAllBooks()
+      // NetworkingService.addBook(bookDetails: bookDetails)
         NetworkingService.returnBooks { (returnedBooks) in
             //update array, reload tableview
         }
+
         // Do any additional setup after loading the view.
     }
     
