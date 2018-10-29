@@ -38,7 +38,16 @@ class BookAdditionViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     @IBAction func submitPressed(_ sender: Any) {
-        if (bookTitleTextField.text != "" && authorTextField.text != "" && publisherTextField.text != "" && categoryTextField.text != ""){
+
+        if (bookTitleTextField.text == "" || authorTextField.text == "") {
+            let missingInfoAlert = UIAlertController(title: "Incomplete Form", message: "At least Title and Author fields must be filled out to add a book", preferredStyle: .alert)
+
+            let okAction = UIAlertAction(title: "Ok", style: .default) { (action) in
+
+            }
+            missingInfoAlert.addAction(okAction)
+            self.present(missingInfoAlert, animated: true, completion: nil)
+        } else {
             NetworkingService.addBook(author: authorTextField.text!, categories: categoryTextField.text!, title: bookTitleTextField.text!, publisher: publisherTextField.text!) {
                 () in
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
@@ -46,6 +55,7 @@ class BookAdditionViewController: UIViewController {
                 self.dismiss(animated: true, completion: nil)
             }
         }
+
     }
 
     @IBAction func screenTapped(_ sender: Any) {
