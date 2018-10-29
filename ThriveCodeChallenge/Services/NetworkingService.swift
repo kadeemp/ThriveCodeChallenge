@@ -103,9 +103,9 @@ class NetworkingService {
     }
     static func deleteAllBooks() {
 
-        booksPath = "/clean"
+        let deleteAllPath = "/clean"
 
-        Alamofire.request(baseURL + booksPath, method: .delete, parameters: nil, encoding: JSONEncoding.default , headers: nil).responseJSON { (response:DataResponse<Any>) in
+        Alamofire.request(baseURL + booksPath + deleteAllPath, method: .delete, parameters: nil, encoding: JSONEncoding.default , headers: nil).responseJSON { (response:DataResponse<Any>) in
             switch response.result {
             case .success:
                 if let json = response.result.value {
