@@ -16,6 +16,7 @@ class NetworkingService {
     private static var urlPath = "/books"
 
     static func returnBooks(completion:@escaping (_ returnedBooks:[Book]) -> ()) {
+
         var booksToReturn:[Book] = []
 
         Alamofire.request(baseURL + urlPath, method: .get, parameters: nil, encoding: JSONEncoding.default , headers: nil).responseJSON { (response:DataResponse<Any>) in
@@ -58,12 +59,10 @@ class NetworkingService {
         let idString =  "/" + String(id)
         let checkoutDetails:Dictionary<String,String>  = ["lastCheckedOutBy":bookChecker]
 
-
         Alamofire.request(baseURL + urlPath + idString, method: .put, parameters: checkoutDetails, encoding: JSONEncoding.default , headers: nil).responseJSON { (response:DataResponse<Any>) in
             switch response.result {
             case .success:
                 if let json = response.result.value {
-
 
                     let bookJsonDictionary = JSON(json).dictionary!
 
@@ -118,6 +117,7 @@ class NetworkingService {
             }
         }
     }
+    
     static func parseBooks(booksJSON:[JSON]) -> [Book] {
         var booksToReturn:[Book] = []
 

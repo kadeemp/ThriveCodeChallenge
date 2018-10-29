@@ -160,7 +160,7 @@
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="20"/>
+                                        <integer key="value" value="15"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
@@ -245,11 +245,17 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xcm-2C-gls">
-                                <rect key="frame" x="50" y="394" width="275" height="83.5"/>
+                                <rect key="frame" x="50" y="394" width="275" height="66.5"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
-                                <state key="normal" title="Checkout" backgroundImage="Rectangle">
-                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <state key="normal" title="Checkout">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="checkOutBtnPressed:" destination="Sd7-w4-2ry" eventType="touchUpInside" id="W53-5F-plU"/>
                                 </connections>
@@ -263,7 +269,7 @@
                             <constraint firstItem="Xcm-2C-gls" firstAttribute="top" secondItem="G6J-e5-sIq" secondAttribute="bottom" constant="30.5" id="IVj-q8-THw"/>
                             <constraint firstItem="G6J-e5-sIq" firstAttribute="top" secondItem="DJT-WA-Bug" secondAttribute="top" constant="16" id="Igr-bZ-rq1"/>
                             <constraint firstItem="DJT-WA-Bug" firstAttribute="trailing" secondItem="Xcm-2C-gls" secondAttribute="trailing" constant="50" id="hcA-kO-dHx"/>
-                            <constraint firstItem="Xcm-2C-gls" firstAttribute="height" secondItem="hnU-Zr-N5c" secondAttribute="height" multiplier="1/8" id="pH8-FR-JcM"/>
+                            <constraint firstItem="Xcm-2C-gls" firstAttribute="height" secondItem="hnU-Zr-N5c" secondAttribute="height" multiplier="1/10" id="pH8-FR-JcM"/>
                             <constraint firstItem="G6J-e5-sIq" firstAttribute="leading" secondItem="DJT-WA-Bug" secondAttribute="leading" constant="16" id="wja-hU-tnL"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="DJT-WA-Bug"/>
@@ -318,7 +324,4 @@
             <point key="canvasLocation" x="1072.8" y="858.62068965517244"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="Rectangle" width="329" height="62"/>
-    </resources>
 </document>

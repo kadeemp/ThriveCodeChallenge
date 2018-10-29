@@ -18,7 +18,6 @@ class BookDetailsViewController: UIViewController {
     @IBOutlet weak var checkOutBtn: UIButton!
 
     static var book:Book!
-    let defaults = UserDefaults.standard
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +35,7 @@ class BookDetailsViewController: UIViewController {
             lastCheckedOutLabel.text =  "Last checked out by \(BookDetailsViewController.book.lastCheckedOutBy!) \n Date: \(String(describing: BookDetailsViewController.book.lastCheckedOut!))"
         }
     }
+
     func setupShareButton() {
         let button = UIButton(type: .system)
         button.setBackgroundImage(UIImage(named: "Share Button"), for: .normal)
@@ -43,6 +43,7 @@ class BookDetailsViewController: UIViewController {
         button.addTarget(self, action: #selector(shareBtnPressed), for: .touchUpInside)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button)
     }
+
     @objc func shareBtnPressed() {
         var activityItems:[String] = []
         
@@ -58,32 +59,30 @@ class BookDetailsViewController: UIViewController {
     }
 
     @IBAction func checkOutBtnPressed(_ sender: Any) {
-        
-        if let name = defaults.object(forKey: "name") as? String {
-            NetworkingService.updateBook(id: BookDetailsViewController.book.id, bookChecker: name) { (updatedBook) in
-                self.lastCheckedOutLabel.text =  "Last checked out by \(updatedBook.lastCheckedOutBy!) \n Date:  \(String(describing: updatedBook.lastCheckedOut!))"
+
+        let bookCheckoutAlert = UIAlertController(title: "Book Checkout", message: "To check out this book, enter your full name below", preferredStyle: .alert)
+
+        let nameSubmitAction = UIAlertAction(title: "Submit", style: .default) { (action) in
+            let nameTextField = bookCheckoutAlert.textFields![0] as UITextField
+
+            if nameTextField.text !=  "" {
+                NetworkingService.updateBook(id: BookDetailsViewController.book.id, bookChecker: nameTextField.text!) { (updatedBook) in
+                    self.lastCheckedOutLabel.text =  "Last checked out by \(updatedBook.lastCheckedOutBy!) \n Date:  \(String(describing: updatedBook.lastCheckedOut!))"
                 }
-             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
-        }
-        else {
-            let missingNameAlert = UIAlertController(title: "Please Register", message: "To start checking out books, please enter your full name below", preferredStyle: .alert)
-
-            let nameSubmitAction = UIAlertAction(title: "Submit", style: .default) { (action) in
-                let nameTextField = missingNameAlert.textFields![0] as UITextField
-                self.defaults.set(nameTextField.text, forKey: "name")
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
                 self.dismiss(animated: true, completion: nil)
             }
-            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
-                self.dismiss(animated: true, completion: nil)
-            }
-            missingNameAlert.addTextField(configurationHandler: { (textField) in
-                textField.placeholder = "Full Name"
 
-                missingNameAlert.addAction(nameSubmitAction)
-                missingNameAlert.addAction(cancelAction)
-                self.present(missingNameAlert, animated: true, completion: nil)
-
-            })
         }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .destructive) { (action) in
+            self.dismiss(animated: true, completion: nil)
+        }
+        bookCheckoutAlert.addTextField(configurationHandler: { (textField) in
+            textField.placeholder = "Full Name"
+
+            bookCheckoutAlert.addAction(nameSubmitAction)
+            bookCheckoutAlert.addAction(cancelAction)
+            self.present(bookCheckoutAlert, animated: true, completion: nil)
+        })
     }
 }
