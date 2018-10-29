@@ -25,7 +25,6 @@ class BookAdditionViewController: UIViewController {
 
     func setupCancelButton() {
         let button = UIButton(type: .system)
-        //button.setBackgroundImage(UIImage(named: "Rectangle"), for: .normal)
         button.sizeToFit()
         button.setTitle("Cancel", for: .normal)
         button.addTarget(self, action: #selector(cancelBtnPressed), for: .touchUpInside)

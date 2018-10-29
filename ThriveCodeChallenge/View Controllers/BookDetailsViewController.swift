@@ -68,11 +68,10 @@ class BookDetailsViewController: UIViewController {
             if nameTextField.text !=  "" {
                 NetworkingService.updateBook(id: BookDetailsViewController.book.id, bookChecker: nameTextField.text!) { (updatedBook) in
                     self.lastCheckedOutLabel.text =  "Last checked out by \(updatedBook.lastCheckedOutBy!) \n Date:  \(String(describing: updatedBook.lastCheckedOut!))"
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
+                    self.dismiss(animated: true, completion: nil)
                 }
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
-                self.dismiss(animated: true, completion: nil)
             }
-
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .destructive) { (action) in
             self.dismiss(animated: true, completion: nil)

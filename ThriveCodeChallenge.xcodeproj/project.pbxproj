@@ -90,6 +90,7 @@
 			children = (
 				F40B129D21852B2A00D28D23 /* Services */,
 				F40B129C21852B1400D28D23 /* Models */,
+				F40B12B22186D28B00D28D23 /* Views */,
 				F40B129B21852B0F00D28D23 /* View Controllers */,
 				F40B128921852AB200D28D23 /* AppDelegate.swift */,
 				F40B128D21852AB200D28D23 /* Main.storyboard */,
@@ -114,7 +115,6 @@
 			isa = PBXGroup;
 			children = (
 				F40B12A821852BA700D28D23 /* Book.swift */,
-				F40B12AA21855E4F00D28D23 /* BookTableViewCell.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -125,6 +125,14 @@
 				F40B12A621852B9900D28D23 /* NetworkingService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		F40B12B22186D28B00D28D23 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F40B12AA21855E4F00D28D23 /* BookTableViewCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

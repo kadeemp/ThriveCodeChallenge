@@ -48,8 +48,6 @@ class NetworkingService {
                 }
             case .failure:
                 print(response.error)
-
-
             }
         }
     }
@@ -57,6 +55,7 @@ class NetworkingService {
     static func updateBook(id:Int,bookChecker:String, completion: @escaping (_ updatedBook:Book) -> ()) {
 
         let idString =  "/" + String(id)
+        
         let checkoutDetails:Dictionary<String,String>  = ["lastCheckedOutBy":bookChecker]
 
         Alamofire.request(baseURL + urlPath + idString, method: .put, parameters: checkoutDetails, encoding: JSONEncoding.default , headers: nil).responseJSON { (response:DataResponse<Any>) in
