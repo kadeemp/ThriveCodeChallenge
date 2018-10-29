@@ -10,29 +10,38 @@ import UIKit
 
 class BookAdditionViewController: UIViewController {
 
-    @IBOutlet weak var bookTitleLabel: UITextField!
-    @IBOutlet weak var authorLabel: UITextField!
-    @IBOutlet weak var publisherLabel: UITextField!
-    @IBOutlet weak var categoryLabel: UITextField!
+    @IBOutlet weak var bookTitleTextField: UITextField!
+    @IBOutlet weak var authorTextField: UITextField!
+    @IBOutlet weak var publisherTextField: UITextField!
+    @IBOutlet weak var categoryTextField: UITextField!
     @IBOutlet weak var submitBtn: UIButton!
+    @IBOutlet var screenTappedGestureRecognizer: UITapGestureRecognizer!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Add Book"
-        // Do any additional setup after loading the view.
     }
-    
 
     @IBAction func submitPressed(_ sender: Any) {
-        if (bookTitleLabel.text != "" && authorLabel.text != "" && publisherLabel.text != "" && categoryLabel.text != ""){
-            NetworkingService.addBook(author: authorLabel.text!, categories: categoryLabel.text!, title: bookTitleLabel.text!, publisher: publisherLabel.text!) {
+        if (bookTitleTextField.text != "" && authorTextField.text != "" && publisherTextField.text != "" && categoryTextField.text != ""){
+            NetworkingService.addBook(author: authorTextField.text!, categories: categoryTextField.text!, title: bookTitleTextField.text!, publisher: publisherTextField.text!) {
                 () in
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
-
                 self.navigationController?.popViewController(animated: true)
             }
         }
-
-        
     }
 
+    @IBAction func screenTapped(_ sender: Any) {
+        self.resignFirstResponder()
+        if bookTitleTextField.isFirstResponder {
+            bookTitleTextField.resignFirstResponder()
+        } else if authorTextField.isFirstResponder {
+            authorTextField.resignFirstResponder()
+        } else if publisherTextField.isFirstResponder {
+            publisherTextField.resignFirstResponder()
+        } else if categoryTextField.isFirstResponder {
+            categoryTextField.resignFirstResponder()
+        }
+    }
 }

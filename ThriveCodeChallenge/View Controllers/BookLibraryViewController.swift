@@ -33,6 +33,7 @@ class BookLibraryViewController: UIViewController, UITableViewDelegate, UITableV
             self.bookTableView.reloadData()
         }
     }
+    
     func setupDeleteButton() {
         let button = UIButton(type: .system)
         button.setBackgroundImage(UIImage(named: "Delete Button"), for: .normal)
@@ -46,6 +47,9 @@ class BookLibraryViewController: UIViewController, UITableViewDelegate, UITableV
         let alertView = UIAlertController(title: "Delete All Books", message: "Are you sure you want to delete all books in the library?",preferredStyle: .alert)
         let deleteAction = UIAlertAction(title: "Yes", style: .destructive) { (action) in
             NetworkingService.deleteAllBooks()
+            self.books = []
+            self.bookTableView.reloadData()
+
         }
         let cancelAction = UIAlertAction(title: "No", style: .cancel) { (action) in
             self.dismiss(animated: true, completion: nil)
