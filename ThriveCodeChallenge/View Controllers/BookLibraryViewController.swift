@@ -12,6 +12,7 @@ class BookLibraryViewController: UIViewController, UITableViewDelegate, UITableV
 
     @IBOutlet weak var bookTableView: UITableView!
     @IBOutlet weak var addBookButton: UIButton!
+    private let refreshControl = UIRefreshControl()
 
     var books:[Book] = []
 
@@ -20,7 +21,22 @@ class BookLibraryViewController: UIViewController, UITableViewDelegate, UITableV
         setupDeleteButton()
         self.title = "Book Library"
         loadBooks()
+        refreshControlSetup()
         NotificationCenter.default.addObserver(self, selector: #selector(loadBooks), name: NSNotification.Name(rawValue: "load"), object: nil)
+    }
+
+    func refreshControlSetup() {
+        if #available(iOS 10.0, *) {
+            bookTableView.refreshControl = refreshControl
+        } else {
+            bookTableView.addSubview(refreshControl)
+        }
+        refreshControl.addTarget(self, action: #selector(refreshFeed), for: .valueChanged)
+    }
+
+    @objc func refreshFeed() {
+       loadBooks()
+
     }
 
     @IBAction func addBookPressed(_ sender: Any) {
@@ -31,6 +47,7 @@ class BookLibraryViewController: UIViewController, UITableViewDelegate, UITableV
         NetworkingService.returnBooks { (returnedBooks) in
             self.books = returnedBooks
             self.bookTableView.reloadData()
+            self.refreshControl.endRefreshing()
         }
     }
     

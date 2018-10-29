@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BookAdditionViewController: UIViewController {
+class BookAdditionViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var bookTitleTextField: UITextField!
     @IBOutlet weak var authorTextField: UITextField!
@@ -52,6 +52,7 @@ class BookAdditionViewController: UIViewController {
         }
 
     }
+    //MARK:- IB Actions
     @IBAction func submitPressed(_ sender: Any) {
 
         if (bookTitleTextField.text == "" || authorTextField.text == "") {
@@ -74,7 +75,7 @@ class BookAdditionViewController: UIViewController {
     }
 
     @IBAction func screenTapped(_ sender: Any) {
-        self.resignFirstResponder()
+
         if bookTitleTextField.isFirstResponder {
             bookTitleTextField.resignFirstResponder()
         } else if authorTextField.isFirstResponder {
@@ -84,5 +85,19 @@ class BookAdditionViewController: UIViewController {
         } else if categoryTextField.isFirstResponder {
             categoryTextField.resignFirstResponder()
         }
+    }
+    //MARK:- UITextField Delegate
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if bookTitleTextField.isFirstResponder {
+            authorTextField.becomeFirstResponder()
+        } else if authorTextField.isFirstResponder {
+            publisherTextField.becomeFirstResponder()
+        } else if publisherTextField.isFirstResponder {
+            categoryTextField.becomeFirstResponder()
+        } else if categoryTextField.isFirstResponder {
+            categoryTextField.resignFirstResponder()
+        }
+        return true
     }
 }

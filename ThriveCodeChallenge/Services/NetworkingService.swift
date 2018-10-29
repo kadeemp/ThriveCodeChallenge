@@ -13,18 +13,19 @@ import Alamofire
 class NetworkingService {
 
     private static let baseURL = "https://ivy-ios-challenge.herokuapp.com"
-    private static var urlPath = "/books"
+    private static var booksPath = "/books"
 
     static func returnBooks(completion:@escaping (_ returnedBooks:[Book]) -> ()) {
 
         var booksToReturn:[Book] = []
 
-        Alamofire.request(baseURL + urlPath, method: .get, parameters: nil, encoding: JSONEncoding.default , headers: nil).responseJSON { (response:DataResponse<Any>) in
+        Alamofire.request(baseURL + booksPath, method: .get, parameters: nil, encoding: JSONEncoding.default , headers: nil).responseJSON { (response:DataResponse<Any>) in
             switch response.result {
             case .success:
                 if let json = response.result.value {
                     let booksJsonArray = JSON(json).arrayValue
                     booksToReturn = parseBooks(booksJSON: booksJsonArray)
+                    print(booksToReturn)
                     completion(booksToReturn)
 
                 }
@@ -39,7 +40,7 @@ class NetworkingService {
 
         let bookDetails:Dictionary<String,String> = ["author":author, "categories":categories, "title": title, "publisher": publisher]
 
-        Alamofire.request(baseURL + urlPath, method: .post, parameters: bookDetails, encoding: JSONEncoding.default , headers: nil).responseString { (response:DataResponse<String>) in
+        Alamofire.request(baseURL + booksPath, method: .post, parameters: bookDetails, encoding: JSONEncoding.default , headers: nil).responseString { (response:DataResponse<String>) in
             switch response.result {
             case .success:
                 if let json = response.result.value {
@@ -54,11 +55,11 @@ class NetworkingService {
 
     static func updateBook(id:Int,bookChecker:String, completion: @escaping (_ updatedBook:Book) -> ()) {
 
-        let idString =  "/" + String(id)
+        let idPath =  "/" + String(id)
         
         let checkoutDetails:Dictionary<String,String>  = ["lastCheckedOutBy":bookChecker]
 
-        Alamofire.request(baseURL + urlPath + idString, method: .put, parameters: checkoutDetails, encoding: JSONEncoding.default , headers: nil).responseJSON { (response:DataResponse<Any>) in
+        Alamofire.request(baseURL + booksPath + idPath, method: .put, parameters: checkoutDetails, encoding: JSONEncoding.default , headers: nil).responseJSON { (response:DataResponse<Any>) in
             switch response.result {
             case .success:
                 if let json = response.result.value {
@@ -86,9 +87,9 @@ class NetworkingService {
 
     static func deleteBook(bookId:Int) {
 
-        urlPath += "/\(bookId)"
+      let deletePath = "/\(bookId)"
 
-        Alamofire.request(baseURL + urlPath, method: .delete, parameters: nil, encoding: JSONEncoding.default , headers: nil).responseJSON { (response:DataResponse<Any>) in
+        Alamofire.request(baseURL + booksPath + deletePath, method: .delete, parameters: nil, encoding: JSONEncoding.default , headers: nil).responseJSON { (response:DataResponse<Any>) in
             switch response.result {
             case .success:
                 if let json = response.result.value {
@@ -102,9 +103,9 @@ class NetworkingService {
     }
     static func deleteAllBooks() {
 
-        urlPath = "/clean"
+        booksPath = "/clean"
 
-        Alamofire.request(baseURL + urlPath, method: .delete, parameters: nil, encoding: JSONEncoding.default , headers: nil).responseJSON { (response:DataResponse<Any>) in
+        Alamofire.request(baseURL + booksPath, method: .delete, parameters: nil, encoding: JSONEncoding.default , headers: nil).responseJSON { (response:DataResponse<Any>) in
             switch response.result {
             case .success:
                 if let json = response.result.value {
