@@ -20,14 +20,30 @@ class BookAdditionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Add Book"
+        setupCancelButton()
     }
 
+    func setupCancelButton() {
+        let button = UIButton(type: .system)
+        //button.setBackgroundImage(UIImage(named: "Rectangle"), for: .normal)
+        button.sizeToFit()
+        button.setTitle("Cancel", for: .normal)
+        button.addTarget(self, action: #selector(cancelBtnPressed), for: .touchUpInside)
+        button.setTitleColor(UIColor.red, for: .normal)
+        button.frame.size = CGSize(width: 50, height: 30)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button)
+    }
+
+    @objc func cancelBtnPressed() {
+        self.dismiss(animated: true, completion: nil)
+    }
     @IBAction func submitPressed(_ sender: Any) {
         if (bookTitleTextField.text != "" && authorTextField.text != "" && publisherTextField.text != "" && categoryTextField.text != ""){
             NetworkingService.addBook(author: authorTextField.text!, categories: categoryTextField.text!, title: bookTitleTextField.text!, publisher: publisherTextField.text!) {
                 () in
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
                 self.navigationController?.popViewController(animated: true)
+                self.dismiss(animated: true, completion: nil)
             }
         }
     }
