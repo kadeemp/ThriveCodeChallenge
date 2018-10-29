@@ -35,7 +35,23 @@ class BookAdditionViewController: UIViewController {
     }
 
     @objc func cancelBtnPressed() {
-        self.dismiss(animated: true, completion: nil)
+        if (bookTitleTextField.text != "" || authorTextField.text != "" || publisherTextField.text != "" || categoryTextField.text != "") {
+            let midCompletionCancelAlert = UIAlertController(title: "Cancel Confirmation", message: "Are you sure you want to cancel? Your changes will not be saved", preferredStyle: .alert)
+
+            let yesAction = UIAlertAction(title: "Yes", style: .destructive) { (action) in
+                self.dismiss(animated: true, completion: nil)
+            }
+            let noAction = UIAlertAction(title: "No", style: .default) { (action) in
+
+            }
+            midCompletionCancelAlert.addAction(noAction)
+            midCompletionCancelAlert.addAction(yesAction)
+            self.present(midCompletionCancelAlert, animated: true, completion: nil)
+
+        } else {
+             self.dismiss(animated: true, completion: nil)
+        }
+
     }
     @IBAction func submitPressed(_ sender: Any) {
 
