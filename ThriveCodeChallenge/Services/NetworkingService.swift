@@ -14,6 +14,7 @@ class NetworkingService {
 
     private static let baseURL = "https://ivy-ios-challenge.herokuapp.com"
     private static var booksPath = "/books"
+    private static let deleteAllPath = "/clean"
 
     static func returnBooks(completion:@escaping (_ returnedBooks:[Book]) -> ()) {
 
@@ -25,7 +26,6 @@ class NetworkingService {
                 if let json = response.result.value {
                     let booksJsonArray = JSON(json).arrayValue
                     booksToReturn = parseBooks(booksJSON: booksJsonArray)
-                    print(booksToReturn)
                     completion(booksToReturn)
 
                 }
@@ -103,9 +103,7 @@ class NetworkingService {
     }
     static func deleteAllBooks() {
 
-        let deleteAllPath = "/clean"
-
-        Alamofire.request(baseURL + booksPath + deleteAllPath, method: .delete, parameters: nil, encoding: JSONEncoding.default , headers: nil).responseJSON { (response:DataResponse<Any>) in
+        Alamofire.request(baseURL + deleteAllPath , method: .delete, parameters: nil, encoding: JSONEncoding.default , headers: nil).responseJSON { (response:DataResponse<Any>) in
             switch response.result {
             case .success:
                 if let json = response.result.value {
